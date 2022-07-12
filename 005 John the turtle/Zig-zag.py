@@ -9,12 +9,12 @@ john.width(15)
 john.shape("turtle")
 
 
-def random_move():
+def rand_move():
     moves = [john.forward(45), john.right(45), john.backward(45), john.left(45)]
-    move_random = random.choice(moves)
-    return move_random
+    move_ran = moves
+    return move_ran
 
 
 for move in range (1,5):
     john.color(random.choice(colours))
-    random_move()
+    rand_move()
