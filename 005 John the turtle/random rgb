@@ -1,0 +1,26 @@
+import turtle as tr
+import random
+
+john = tr.Turtle()
+tr.colormode(255)
+
+
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    rgb = (r, g, b)
+    return rgb
+
+
+moves = [0, 90, 180, 270]
+
+
+john.width(15)
+john.shape("turtle")
+john.speed(10)
+
+for move in range(1, 180):
+    john.color(random_color())
+    john.forward(30)
+    john.setheading(random.choice(moves))
