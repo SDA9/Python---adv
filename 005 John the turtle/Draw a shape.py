@@ -31,11 +31,20 @@ elif color_selection == "b":
 
 
 if figure_selection == "c":
-    while lot_of_circles < 100:
-        john.circle(85)
-        cur_heading = john.heading()
-        john.setheading(cur_heading + 10)
-        lot_of_circles += 1
+    how_random = input("How much random color should be?: [v/l] ")
+    if how_random == "l":
+        while lot_of_circles < 100:
+            john.circle(85)
+            cur_heading = john.heading()
+            john.setheading(cur_heading + 10)
+            lot_of_circles += 1
+    else:
+        while lot_of_circles < 100:
+            john.color(random_color())
+            john.circle(85)
+            cur_heading = john.heading()
+            john.setheading(cur_heading + 10)
+            lot_of_circles += 1
 elif figure_selection == "t":
     while lot_of_squares < 100:
         for side in range (1,3):
