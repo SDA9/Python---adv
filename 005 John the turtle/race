@@ -1,0 +1,45 @@
+from turtle import Turtle, Screen
+import random
+
+
+# screen and turtles
+screen_truck = Screen()
+screen_truck.setup(width=600, height=300)
+turtle_color = ["red", "orange", "black", "green", "blue", "grey"]
+turtle_y_pos = [-90, -50, -10, 30, 70, 110]
+turtle_all = []
+player_bet = screen_truck.textinput(title="Make your bet on a turtle", prompt="Which turtle will win the race? Type a color: ")
+player_shape = screen_truck.textinput(title="Shape of a turtle", prompt="Which shape dp you want? arrow/ turtle/ triangle/ classic:  ")
+
+
+def creating_turtles():
+    """Set up for a turtle"""
+    for turtle_index in range(0, 6):
+            turtle_new = Turtle(shape=player_shape)
+            turtle_new.pen(pensize=12)
+            turtle_new.penup()
+            turtle_new.color(turtle_color[turtle_index])
+            turtle_new.goto(x=-270, y=turtle_y_pos[turtle_index])
+            turtle_all.append(turtle_new)
+
+
+def racing_turtles():
+    """Main game function"""
+    creating_turtles()
+
+    is_race_end = True
+    while is_race_end:
+        for turtle in turtle_all:
+            if turtle.xcor() > 270:
+                is_race_end = False
+                turtle_winning = turtle.pencolor()
+                if turtle_winning == player_bet:
+                    print(f"You have won this race! The {turtle_winning} turtle is the winner!!!")
+                else:
+                    print(f"You have lost this! The {turtle_winning} turtle is the winner!!!")
+            turtle_rand_distance = random.randint(0, 10)
+            turtle.forward(turtle_rand_distance)
+    screen_truck.exitonclick()
+
+racing_turtles()
+
